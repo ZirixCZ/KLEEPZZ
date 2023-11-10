@@ -1,0 +1,16 @@
+
+.block{
+    display: flex;
+}
+
+.justifyEnd{
+    justify-content: flex-end;
+}
+
+.highlightGreen {
+    color: #449d5d;
+  }
+  
+  .highlightOrange {
+    color: #d17724;
+  }

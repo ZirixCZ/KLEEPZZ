@@ -1,0 +1,12 @@
+.display {
+  width: 12.125rem;
+  height: 6.0625rem;
+  flex-shrink: 0;
+  border-radius: 0.9375rem;
+  background: linear-gradient(
+    108deg,
+    #d9d9d9 0%,
+    rgba(217, 217, 217, 0.85) 96.25%,
+    rgba(217, 217, 217, 0.75) 96.25%
+  );
+}

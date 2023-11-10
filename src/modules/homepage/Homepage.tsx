@@ -1,5 +1,8 @@
 import cx from 'classnames';
+import { mainHeader, secondHeader, thirdHeader, fourthHeader } from './constants';
 import { HorizontalBlock } from './components/HorizontalBlock';
+
+import VideoList from './components/VideoList/VideoList';
 
 import styles from './Homepage.module.css';
 
@@ -12,14 +15,11 @@ const Homepage = () => {
         })}>
             Funovation
         </h1>
-        <h2 className={styles.textMessages}>
-            Extract short clips from <span className={styles.highlightGreen}>long</span> and <span className={styles.highlightOrange}>boring</span> videos        </h2>
-        <button className={styles.button}>
-            Start for free
-        </button>
-        <img src="" alt="" />
-        <img src="" alt="" />
-        <h2>Fast and easy...</h2>
+        <HorizontalBlock headerContent={mainHeader} inverse={false} buttonText="Start for free" />
+        <HorizontalBlock headerContent={secondHeader} inverse={true} buttonText="" />
+        <HorizontalBlock headerContent={thirdHeader} inverse={false} buttonText="" />
+        <HorizontalBlock headerContent={fourthHeader} inverse={true} buttonText="" />
+        <VideoList />
         </div>
     );
 }
