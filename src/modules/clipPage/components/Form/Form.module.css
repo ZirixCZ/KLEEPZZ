@@ -1,0 +1,26 @@
+.form {
+    position: relative;
+    display: flex;
+    width: 34.75rem;
+    height: 29.125rem;
+    border-radius: 0.9375rem;
+    border: 1px solid rgba(48, 40, 51, 0.50);
+    background: #080808;
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+    }
+}
+
+.wrapper {
+    width: 100%;
+    padding: 2.81rem 5rem 2.81rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+
+    @media (max-width: 768px) {
+        padding: 1rem;
+    }
+}
