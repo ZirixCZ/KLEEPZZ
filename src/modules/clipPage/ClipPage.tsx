@@ -4,9 +4,10 @@ import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
 import Skeleton from "./components/Skeleton/Skeleton";
 import ItemList from "./ItemList/ItemList";
+import Modal from "./Modal/Modal";
 
 import styles from "./ClipPage.module.css";
-import { ClipPageContextProvider } from "./context";
+import { ClipPageContextProvider, useClipPageContext } from "./context";
 import SmallButton from "../../components/SmallButton/SmallButton";
 import { ClipInterface } from "./types";
 
@@ -28,23 +29,30 @@ interface ShowItemsProps {
 
 const ShowItems = (props: ShowItemsProps) => {
   const buttonText = props.isFetching ? "Loading..." : "Confirm";
-  console.log(props.isFetching);
+  const { modalActive } = useClipPageContext();
 
   return (
-    <div className={cx(styles.container, styles.gap)}>
-      {props.isFetching || props.items.length < 1 ? (
-        <Skeleton />
-      ) : (
-        <ItemList items={props.items} />
-      )}
-      <SmallButton disabled>{buttonText}</SmallButton>
-    </div>
+    <>
+      <Modal />
+      <div className={cx(styles.container, styles.gap)}>
+        {props.isFetching || props.items.length < 1 ? (
+          <Skeleton className={styles.itemListContainer} />
+        ) : (
+          <ItemList items={props.items} className={styles.itemListContainer} />
+        )}
+        <SmallButton disabled={props.isFetching}>
+          {props.isFetching ? "Loading..." : "Confirm"}
+        </SmallButton>
+      </div>
+    </>
   );
 };
 
 const ClipPage = () => {
   const [uploaded, setUploaded] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
+  const [modalActive, setModalActive] = useState(false);
+  const [modalId, setModalId] = useState<number | null>(null);
 
   const [items, setItems] = useState<ClipInterface[]>([]);
 
@@ -56,11 +64,34 @@ const ClipPage = () => {
     setIsFetching(true);
 
     // TOOD : fetch the api
+    setTimeout(() => {
+      setItems([
+        {
+          id: 1,
+        },
+        {
+          id: 1,
+        },
+        {
+          id: 1,
+        },
+      ]);
+      setIsFetching(false);
+    }, 1500);
   }, [uploaded]);
 
   return (
     <ClipPageContextProvider
-      value={{ isFetching, uploaded, setIsFetching, setUploaded }}
+      value={{
+        isFetching,
+        uploaded,
+        modalActive,
+        modalId,
+        setIsFetching,
+        setUploaded,
+        setModalActive,
+        setModalId,
+      }}
     >
       {uploaded ? (
         <ShowItems items={items} isFetching={isFetching} />

@@ -7,4 +7,9 @@
     height: 6rem;
     border-radius: 0.9375rem;
     background: linear-gradient(108deg, #D9D9D9 0%, rgba(217, 217, 217, 0.85) 96.25%, rgba(217, 217, 217, 0.75) 96.25%);
+    cursor: pointer;
+
+    &.disabled {
+        cursor: not-allowed;
+    }
 }

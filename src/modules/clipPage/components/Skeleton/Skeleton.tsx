@@ -1,9 +1,14 @@
+import cx from "classnames";
 import Item from "../../Item/Item";
 import { ClipInterface } from "../../types";
 
 import styles from "./Skeleton.module.css";
 
-const Skeleton = () => {
+interface Props {
+  className: string;
+}
+
+const Skeleton = (props: Props) => {
   const clips: ClipInterface[] = [
     {
       id: 1,
@@ -25,7 +30,7 @@ const Skeleton = () => {
     },
   ];
   return (
-    <div className={styles.itemListContainer}>
+    <div className={cx(styles.itemListContainer, props.className)}>
       {clips.map((clip) => (
         <Item id={clip.id} />
       ))}
