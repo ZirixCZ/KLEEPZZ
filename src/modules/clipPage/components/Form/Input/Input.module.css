@@ -1,0 +1,41 @@
+.input {
+    color: #F8FFF7;
+    font-family: Nunito;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: normal;
+    background: none;
+    outline: none;
+    border: 1px solid #E2E8F0;
+    border-radius: 0.9375rem;
+    padding: 0 1rem;
+    width: 24.8125rem;
+    height: 2.5rem;
+    box-sizing: border-box;
+
+    &.isTall {
+        height: 9.1875rem;
+        padding: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
+}
+
+.title {
+    color: #A1A1A1;
+    font-family: Nunito;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.63rem;
+}
