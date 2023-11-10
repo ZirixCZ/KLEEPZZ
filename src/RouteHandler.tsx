@@ -1,4 +1,5 @@
 import React from "react";
+import Homepage from "./modules/homepage/Homepage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Test from "./modules/test/Test";
 import Layout from "./components/Layout/Layout";
@@ -9,6 +10,7 @@ const RouteHandler: React.FC = () => (
     <Layout>
       <Routes>
         <Route path="/test" element={<Test />} />
+        <Route path="/" element={<Homepage />} />
       </Routes>
     </Layout>
   </Router>
