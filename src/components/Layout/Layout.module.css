@@ -1,4 +1,11 @@
 .wrapper {
     display: flex;
     flex-direction: column;
+    padding: 3rem 5rem;
+
+    @media (max-width: 768px) {
+        .wrapper {
+          padding: 2rem 2rem;
+        }
+    }
 }
