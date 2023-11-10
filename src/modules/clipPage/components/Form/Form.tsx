@@ -1,11 +1,22 @@
 import { useRef } from "react";
 import Input from "./Input/Input";
 import SmallButton from "../../../../components/SmallButton/SmallButton";
+import { useClipPageContext } from "../../context";
 
 import styles from "./Form.module.css";
 
-const Form = () => {
+interface Props {
+  handleSubmit: () => void;
+}
+
+const Form = (props: Props) => {
+  const { setUploaded } = useClipPageContext();
   const urlRef = useRef<HTMLInputElement>(null);
+
+  const clickCallback = () => {
+    setUploaded(true);
+    props.handleSubmit();
+  };
 
   return (
     <div className={styles.form}>
@@ -21,7 +32,7 @@ const Form = () => {
           title="Description"
           isTall={true}
         />
-        <SmallButton>Upload</SmallButton>
+        <SmallButton onClick={clickCallback}>Upload</SmallButton>
       </div>
     </div>
   );

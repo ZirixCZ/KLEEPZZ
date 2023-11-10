@@ -3,7 +3,6 @@ import Homepage from "./modules/homepage/Homepage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Test from "./modules/test/Test";
 import Layout from "./components/Layout/Layout";
-import "./global.css";
 import ClipPage from "./modules/clipPage/ClipPage";
 
 const RouteHandler: React.FC = () => (
