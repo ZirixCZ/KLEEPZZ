@@ -13,12 +13,21 @@ const Skeleton = (props: Props) => {
   const clips: ClipInterface[] = [
     {
       id: 1,
+      thumbnail: "",
+      url: "",
+      VideoId: 1,
     },
     {
       id: 2,
+      thumbnail: "",
+      url: "",
+      VideoId: 1,
     },
     {
       id: 3,
+      thumbnail: "",
+      url: "",
+      VideoId: 1,
     },
   ];
   return (

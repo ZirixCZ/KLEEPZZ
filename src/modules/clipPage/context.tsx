@@ -10,11 +10,11 @@ interface ClipPageContextValue {
   isFetching: boolean;
   uploaded: boolean;
   modalActive: boolean;
-  modalId: number | null;
+  modalId: string | null;
   setIsFetching: Dispatch<SetStateAction<boolean>>;
   setUploaded: Dispatch<SetStateAction<boolean>>;
   setModalActive: Dispatch<SetStateAction<boolean>>;
-  setModalId: Dispatch<SetStateAction<number | null>>;
+  setModalId: Dispatch<SetStateAction<string | null>>;
 }
 
 const ClipPageContext = createContext<ClipPageContextValue>({

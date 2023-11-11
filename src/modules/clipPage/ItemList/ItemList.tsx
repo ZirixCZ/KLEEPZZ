@@ -22,6 +22,7 @@ const ItemList = (props: Props) => {
     props.itemsRef.current = selectedItems;
   }, [selectedItems]);
 
+  console.log(props.items);
   return (
     <div className={props.className}>
       {props.items.map((item: ClipInterface) => {
@@ -30,6 +31,7 @@ const ItemList = (props: Props) => {
             setSelectedItems={setSelectedItems}
             id={item.id}
             isActive={true}
+            url={item.url}
           />
         );
       })}

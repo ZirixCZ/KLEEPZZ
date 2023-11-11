@@ -13,8 +13,8 @@ const MainGraphic = (props: Props) => {
         Extract short clips from long and boring videos
       </p>
       <p className={styles.description}>
-        KLEEPZ is an online video editor that allows you to extract
-        short clips from long and boring videos
+        KLEEPZZ is an online video editor that allows you to extract short clips
+        from long and boring videos
       </p>
       <div className={styles.padding}>
         <button onClick={props.onClick} className={styles.button}>

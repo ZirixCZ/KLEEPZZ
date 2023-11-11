@@ -15,6 +15,7 @@ interface Props {
   setSelectedItems?: Dispatch<SetStateAction<SelectedClipsInterface[]>>;
   id: number;
   isActive?: boolean;
+  url?: string;
 }
 
 const Item = (props: Props) => {
@@ -23,7 +24,7 @@ const Item = (props: Props) => {
 
   const onClick = () => {
     setModalActive(true);
-    setModalId(props.id);
+    setModalId(props.url ?? "");
   };
 
   useEffect(() => {

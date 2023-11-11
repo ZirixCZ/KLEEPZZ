@@ -6,16 +6,25 @@ import { useClipPageContext } from "../../context";
 import styles from "./Form.module.css";
 
 interface Props {
-  handleSubmit: () => void;
+  handleSubmit: (data: { url: string; description: string }) => void;
 }
 
 const Form = (props: Props) => {
   const { setUploaded } = useClipPageContext();
   const urlRef = useRef<HTMLInputElement>(null);
+  const descriptionRef = useRef<HTMLInputElement>(null);
 
   const clickCallback = () => {
+    if (!urlRef.current?.value || !descriptionRef.current?.value) {
+      console.log(urlRef.current?.value, descriptionRef.current?.value);
+      return;
+    }
+
     setUploaded(true);
-    props.handleSubmit();
+    props.handleSubmit({
+      url: urlRef.current?.value,
+      description: descriptionRef.current?.value,
+    });
   };
 
   return (
@@ -23,7 +32,7 @@ const Form = (props: Props) => {
       <div className={styles.wrapper}>
         <Input ref={urlRef} placeholder="YouTube video url" title="URL" />
         <Input
-          ref={urlRef}
+          ref={descriptionRef}
           placeholder="Short description of the video"
           title="Description"
           isTall={true}

@@ -1,5 +1,6 @@
 import cx from "classnames";
 import { VideoInterface } from "../../../homepage/components/VideoList/types";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./Video.module.css";
 
@@ -8,7 +9,19 @@ interface Props {
 }
 
 const Video = (props: Props) => {
-  return <div className={styles.video}>{props.data.id}</div>;
+  const navigate = useNavigate();
+  return (
+    <div
+      onClick={() =>
+        navigate("/createClip", {
+          state: { edit: true, videoId: props.data.id },
+        })
+      }
+      className={styles.video}
+    >
+      <img className={styles.thumbnail} src={props.data.thumbnail} />
+    </div>
+  );
 };
 
 interface PlaceholderProps {

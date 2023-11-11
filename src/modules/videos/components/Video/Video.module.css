@@ -6,6 +6,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.thumbnail {
+    width: 100%;
 }
 
 .plusPlaceholder {

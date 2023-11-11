@@ -1,20 +1,41 @@
-import { useEffect, useRef, useState } from "react";
+import {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
+import { useQuery, useLazyQuery, useMutation } from "@apollo/client";
 import cx from "classnames";
 import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
 import Skeleton from "./components/Skeleton/Skeleton";
 import ItemList from "./ItemList/ItemList";
 import Modal from "./Modal/Modal";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import styles from "./ClipPage.module.css";
 import { ClipPageContextProvider } from "./context";
 import { SelectedClipsInterface } from "./types";
 import SmallButton from "../../components/SmallButton/SmallButton";
 import { ClipInterface } from "./types";
 import DescriptionText from "./DescriptionText/DescriptionText";
+import { PROCESS_YOUTUBE_VIDEO } from "./queries/processYoutubeVideo";
+import { GET_VIDEOS } from "../homepage/queries/getVideos";
 
-const Upload = () => {
-  const handleFormSubmit = () => {};
+import styles from "./ClipPage.module.css";
+import { GET_VIDEO } from "../homepage/queries/getVideo";
+
+interface UploadProps {
+  setVideoUploadData: Dispatch<
+    SetStateAction<{ url: string; description: string } | undefined>
+  >;
+}
+
+const Upload = (props: UploadProps) => {
+  const handleFormSubmit = (data: { url: string; description: string }) => {
+    props.setVideoUploadData(data);
+  };
 
   return (
     <div className={styles.container}>
@@ -40,15 +61,44 @@ const Download = () => {
 };
 
 interface ShowItemsProps {
-  items: ClipInterface[];
+  items: ClipInterface[] | undefined;
   isFetching: boolean;
+  isEdit: boolean;
+  videoId: number | null;
 }
 
 const ShowItems = (props: ShowItemsProps) => {
-  const displaySkeleton = props.isFetching || props.items.length < 1;
+  const displaySkeleton =
+    props.isFetching || !props.items || props.items.length < 1;
   const selectedItemsRef = useRef<SelectedClipsInterface[]>([]);
+  const [clips, setClips] = useState<ClipInterface[]>([]);
   const [isDownloading, setIsDownloading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
+
+  const [getVideo, { data, loading, error: queryError }] =
+    useLazyQuery(GET_VIDEO);
+
+  useEffect(() => {
+    if (props.items && props.items?.length > 0) {
+      setClips(props.items);
+      return;
+    }
+
+    if (data?.getVideo) {
+      setClips(data?.getVideo.clips);
+    }
+  }, [data, props.items]);
+
+  useEffect(() => {
+    if (props.isEdit && props.videoId) {
+      console.log(props.videoId);
+      getVideo({
+        variables: {
+          internalId: props.videoId,
+        },
+      });
+    }
+  }, []);
 
   const onClick = () => {
     if (selectedItemsRef.current.length < 1) {
@@ -57,7 +107,6 @@ const ShowItems = (props: ShowItemsProps) => {
     }
     // TODO: send the selected items to the api
     setIsDownloading(true);
-    console.log(selectedItemsRef);
   };
 
   return (
@@ -67,7 +116,7 @@ const ShowItems = (props: ShowItemsProps) => {
         <Download />
       ) : (
         <div className={cx(styles.container, styles.gap)}>
-          {displaySkeleton ? (
+          {displaySkeleton && !props.isEdit ? (
             <>
               <Header>Converting...</Header>
               <Skeleton className={styles.itemListContainer} />
@@ -78,7 +127,7 @@ const ShowItems = (props: ShowItemsProps) => {
               <Header>Please select your clips</Header>
               <ItemList
                 itemsRef={selectedItemsRef}
-                items={props.items}
+                items={clips}
                 className={cx(styles.itemListContainer, styles.isWide)}
               />
               {error && (
@@ -103,33 +152,56 @@ const ClipPage = () => {
   const [uploaded, setUploaded] = useState(false);
   const [isFetching, setIsFetching] = useState(false);
   const [modalActive, setModalActive] = useState(false);
-  const [modalId, setModalId] = useState<number | null>(null);
+  const [modalId, setModalId] = useState<string | null>(null);
+  const [isEdit, setIsEdit] = useState(false);
+  const [videoId, setVideoId] = useState<number | null>(null);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useLayoutEffect(() => {
+    setIsEdit(location.state.edit);
+    setVideoId(location.state.videoId);
+  }, [location]);
+
+  const [videoUploadData, setVideoUploadData] = useState<{
+    url: string;
+    description: string;
+  }>();
+
+  const [videos] = useLazyQuery(GET_VIDEOS);
+
+  const [processYoutubeVideo, { data, loading, error }] = useMutation(
+    PROCESS_YOUTUBE_VIDEO
+  );
 
   const [items, setItems] = useState<ClipInterface[]>([]);
 
   useEffect(() => {
-    if (!uploaded) {
+    if (!uploaded || !videoUploadData) {
       return;
     }
 
-    setIsFetching(true);
+    processYoutubeVideo({
+      variables: {
+        req: {
+          url: videoUploadData.url,
+          title: "test",
+          description: videoUploadData.description,
+        },
+      },
+    }).finally(() => {
+      navigate("/videos");
+    });
+  }, [uploaded, videoUploadData]);
 
-    // TOOD : fetch the api
-    setTimeout(() => {
-      setItems([
-        {
-          id: 1,
-        },
-        {
-          id: 2,
-        },
-        {
-          id: 3,
-        },
-      ]);
-      setIsFetching(false);
-    }, 1500);
-  }, [uploaded]);
+  useEffect(() => {
+    if (!isFetching || !loading) {
+      return;
+    }
+
+    setItems(data);
+  }, [loading, isFetching, data]);
 
   return (
     <ClipPageContextProvider
@@ -144,10 +216,15 @@ const ClipPage = () => {
         setModalId,
       }}
     >
-      {uploaded ? (
-        <ShowItems items={items} isFetching={isFetching} />
+      {uploaded || isEdit ? (
+        <ShowItems
+          videoId={videoId}
+          isEdit={isEdit}
+          items={items}
+          isFetching={isFetching}
+        />
       ) : (
-        <Upload />
+        <Upload setVideoUploadData={setVideoUploadData} />
       )}
     </ClipPageContextProvider>
   );
