@@ -21,14 +21,10 @@ const Form = (props: Props) => {
   return (
     <div className={styles.form}>
       <div className={styles.wrapper}>
+        <Input ref={urlRef} placeholder="YouTube video url" title="URL" />
         <Input
           ref={urlRef}
-          placeholder="YouTube video url..."
-          title="Description"
-        />
-        <Input
-          ref={urlRef}
-          placeholder="YouTube video url..."
+          placeholder="Short description of the video"
           title="Description"
           isTall={true}
         />
