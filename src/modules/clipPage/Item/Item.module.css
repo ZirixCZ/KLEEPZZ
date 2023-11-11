@@ -1,15 +1,44 @@
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 12rem;
+  height: 6rem;
+  border-radius: 0.9375rem;
+  background: linear-gradient(108deg, 
+  rgba(217, 217, 217, 0.8) 0%, 
+  rgba(237, 237, 237, 0.9) 25%, 
+  rgba(217, 217, 217, 0.85) 50%, 
+  rgba(237, 237, 237, 0.9) 75%, 
+  rgba(217, 217, 217, 0.8) 100%);
+  background-size: 200% 100%; 
+  animation: skeleton-loading 1.5s infinite linear; 
+  cursor: pointer;
+}
+
+.container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+}
+
+.checkbox {
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 12rem;
-    height: 6rem;
-    border-radius: 0.9375rem;
-    background: linear-gradient(108deg, #D9D9D9 0%, rgba(217, 217, 217, 0.85) 96.25%, rgba(217, 217, 217, 0.75) 96.25%);
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 0.25rem;
+    background: #FFFFFF;
+    margin-right: 0.5rem;
     cursor: pointer;
-
-    &.disabled {
-        cursor: not-allowed;
-    }
 }

@@ -28,17 +28,20 @@ interface ShowItemsProps {
 }
 
 const ShowItems = (props: ShowItemsProps) => {
-  const buttonText = props.isFetching ? "Loading..." : "Confirm";
-  const { modalActive } = useClipPageContext();
+  const displaySkeleton = props.isFetching || props.items.length < 1;
+  const [selectedItems, setSelectedItems] = useState<ClipInterface[]>([]);
 
   return (
     <>
       <Modal />
       <div className={cx(styles.container, styles.gap)}>
-        {props.isFetching || props.items.length < 1 ? (
+        {displaySkeleton ? (
           <Skeleton className={styles.itemListContainer} />
         ) : (
-          <ItemList items={props.items} className={styles.itemListContainer} />
+          <ItemList
+            items={props.items}
+            className={cx(styles.itemListContainer, styles.isWide)}
+          />
         )}
         <SmallButton disabled={props.isFetching}>
           {props.isFetching ? "Loading..." : "Confirm"}
@@ -70,10 +73,10 @@ const ClipPage = () => {
           id: 1,
         },
         {
-          id: 1,
+          id: 2,
         },
         {
-          id: 1,
+          id: 3,
         },
       ]);
       setIsFetching(false);

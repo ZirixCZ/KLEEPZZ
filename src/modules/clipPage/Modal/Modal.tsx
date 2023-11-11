@@ -12,8 +12,6 @@ const Modal = () => {
     setModalId(null);
   };
 
-  console.log(modalActive);
-
   return (
     <div className={cx(styles.transition, { [styles.visible]: modalActive })}>
       <div className={styles.overlay} />

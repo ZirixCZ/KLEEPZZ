@@ -9,6 +9,7 @@ interface Props {
 }
 
 const Skeleton = (props: Props) => {
+
   const clips: ClipInterface[] = [
     {
       id: 1,
