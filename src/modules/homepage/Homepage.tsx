@@ -16,18 +16,25 @@ const Homepage = () => {
       <div className={styles.bg}>
         <MainGraphic onClick={() => navigate("/videos")} />
         <StepDisplay
-          headerText="Step one: upload a YouTube video"
-          descriptionText="Lorem ipsum dolor sit amet consectetur. Ipsum rhoncus urna consequat ac. Mauris viverra mi tincidunt massa sed tortor. Dictum leo mattis auctor at proin ultrices. Ut suspendisse ante sed leo et facilisi porta egestas sed."
+          headerText="Step one: upload a YouTube video URL"
+          descriptionText="Upload a YouTube video URL and we'll automatically generate a short clips for you."
         />
-        <Graphic />
+        <Graphic source='./assets/Group2.svg' />
         <StepDisplay
           headerText="Step two: select your clips"
-          descriptionText="Lorem ipsum dolor sit amet consectetur. Ipsum rhoncus urna consequat ac. Mauris viverra mi tincidunt massa sed tortor. Dictum leo mattis auctor at proin ultrices. Ut suspendisse ante sed leo et facilisi porta egestas sed."
+          descriptionText="Select the clips which fit your story. You can select as many as you want."
         />
+        <Graphic source='./assets/Row21.svg' />
+        <Graphic source='./assets/Row22.svg' />
         <StepDisplay
-          headerText="Step three: enjoy your goth mommy"
-          descriptionText="Lorem ipsum dolor sit amet consectetur. Ipsum rhoncus urna consequat ac. Mauris viverra mi tincidunt massa sed tortor. Dictum leo mattis auctor at proin ultrices. Ut suspendisse ante sed leo et facilisi porta egestas sed."
+          headerText="Step three: enjoy your clips"
+          descriptionText="Download your clips and enjoy them!"
         />
+        <Graphic source='./assets/Row3.svg' />
+        <div className={styles.center}>
+            <button className={styles.bottomButton}>Try now</button>
+        </div>
+        
       </div>
     );
 }
