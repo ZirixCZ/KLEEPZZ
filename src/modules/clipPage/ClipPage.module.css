@@ -11,6 +11,21 @@
     }
 }
 
+.downloadVideoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+.buttonWraper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 
 
 .gap {

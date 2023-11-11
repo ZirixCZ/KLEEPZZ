@@ -33,6 +33,7 @@ const Item = (props: Props) => {
     }
 
     props.setSelectedItems((prev) => {
+      console.log(props.id);
       if (checked) {
         return [...prev, { id: props.id, checked }];
       } else {

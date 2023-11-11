@@ -7,6 +7,12 @@ body {
   font-weight: 800;
   line-height: normal;
 }
+
+.wrapper {
+  display: flex;
+  gap: 2rem;
+  flex-direction: column;
+}
 .mainHeader {
   text-align: center;
   padding: 1.25rem;

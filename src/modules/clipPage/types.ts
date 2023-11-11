@@ -1,5 +1,5 @@
 export interface ClipInterface {
-  id: number;
+  Id: number;
   VideoId: number;
   thumbnail: string;
   url: string;

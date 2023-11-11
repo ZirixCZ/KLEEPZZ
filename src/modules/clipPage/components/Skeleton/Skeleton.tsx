@@ -12,19 +12,19 @@ const Skeleton = (props: Props) => {
 
   const clips: ClipInterface[] = [
     {
-      id: 1,
+      Id: 1,
       thumbnail: "",
       url: "",
       VideoId: 1,
     },
     {
-      id: 2,
+      Id: 2,
       thumbnail: "",
       url: "",
       VideoId: 1,
     },
     {
-      id: 3,
+      Id: 3,
       thumbnail: "",
       url: "",
       VideoId: 1,
@@ -33,7 +33,7 @@ const Skeleton = (props: Props) => {
   return (
     <div className={cx(styles.itemListContainer, props.className)}>
       {clips.map((clip) => (
-        <Item id={clip.id} />
+        <Item id={clip.Id} />
       ))}
     </div>
   );

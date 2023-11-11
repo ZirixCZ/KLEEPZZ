@@ -15,21 +15,20 @@ const ItemList = (props: Props) => {
 
   useEffect(() => {
     if (!props.itemsRef) {
-    console.log("returned:w|");
       return;
     }
 
+    console.log(selectedItems);
     props.itemsRef.current = selectedItems;
   }, [selectedItems]);
 
-  console.log(props.items);
   return (
     <div className={props.className}>
       {props.items.map((item: ClipInterface) => {
         return (
           <Item
             setSelectedItems={setSelectedItems}
-            id={item.id}
+            id={item.Id}
             isActive={true}
             url={item.url}
           />

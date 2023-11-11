@@ -1,5 +1,6 @@
 import {
   Dispatch,
+  RefObject,
   SetStateAction,
   useEffect,
   useLayoutEffect,
@@ -22,6 +23,7 @@ import { ClipInterface } from "./types";
 import DescriptionText from "./DescriptionText/DescriptionText";
 import { PROCESS_YOUTUBE_VIDEO } from "./queries/processYoutubeVideo";
 import { GET_VIDEOS } from "../homepage/queries/getVideos";
+import { GENERATE_REEL } from "./queries/generateReel";
 
 import styles from "./ClipPage.module.css";
 import { GET_VIDEO } from "../homepage/queries/getVideo";
@@ -49,13 +51,61 @@ const Upload = (props: UploadProps) => {
   );
 };
 
-const Download = () => {
+interface DownloadProps {
+  clips: RefObject<SelectedClipsInterface[]>;
+  videoId: number | null;
+}
+
+const Download = (props: DownloadProps) => {
+  const [reel, { data }] = useMutation(GENERATE_REEL);
+
+  useEffect(() => {
+    if (!props.clips.current || props.clips.current.length < 1) {
+      return;
+    }
+
+    const clipIds = props.clips.current.map((clip) => clip.id);
+
+    reel({
+      variables: {
+        req: {
+          clipIds,
+          videoId: props.videoId,
+        },
+      },
+    });
+  }, [props]);
+
+  const downloadVideo = () => {
+    if (!data || !data.generateReel?.URL) {
+      return;
+    }
+
+    const link = document.createElement("a");
+    link.href = data.generateReel.URL;
+    link.download = "reel.mp4";
+    link.target = "_blank";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className={cx(styles.container, styles.containerFillSpace)}>
       <Header className={styles.noSpaceHeading}>
-        We’re making your video!
+        {!data ? "We’re making your video!" : "Your video is ready!"}
       </Header>
-      <DescriptionText>(This may take a few minutes)</DescriptionText>
+      {!data && (
+        <DescriptionText>(This may take a few minutes)</DescriptionText>
+      )}
+      {data && (
+        <div className={styles.downloadVideoContainer}>
+          <video src={data.generateReel.URL} controls />
+          <div className={styles.buttonWraper}>
+            <SmallButton onClick={downloadVideo}>Download</SmallButton>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -113,7 +163,7 @@ const ShowItems = (props: ShowItemsProps) => {
     <>
       <Modal />
       {isDownloading ? (
-        <Download />
+        <Download videoId={props.videoId} clips={selectedItemsRef} />
       ) : (
         <div className={cx(styles.container, styles.gap)}>
           {displaySkeleton && !props.isEdit ? (
@@ -160,8 +210,8 @@ const ClipPage = () => {
   const navigate = useNavigate();
 
   useLayoutEffect(() => {
-    setIsEdit(location.state.edit);
-    setVideoId(location.state.videoId);
+    setIsEdit(location.state?.edit);
+    setVideoId(location.state?.videoId);
   }, [location]);
 
   const [videoUploadData, setVideoUploadData] = useState<{

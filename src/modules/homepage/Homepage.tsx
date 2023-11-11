@@ -19,22 +19,23 @@ const Homepage = () => {
           headerText="Step one: upload a YouTube video URL"
           descriptionText="Upload a YouTube video URL and we'll automatically generate a short clips for you."
         />
-        <Graphic source='./assets/Group2.svg' />
+        <Graphic source="./assets/Group2.svg" />
         <StepDisplay
           headerText="Step two: select your clips"
           descriptionText="Select the clips which fit your story. You can select as many as you want."
         />
-        <Graphic source='./assets/Row21.svg' />
-        <Graphic source='./assets/Row22.svg' />
+        <div className={styles.wrapper}>
+          <Graphic source="./assets/Row21.svg" />
+          <Graphic source="./assets/Row22.svg" />
+        </div>
         <StepDisplay
           headerText="Step three: enjoy your clips"
           descriptionText="Download your clips and enjoy them!"
         />
-        <Graphic source='./assets/Row3.svg' />
+        <Graphic source="./assets/Row3.svg" />
         <div className={styles.center}>
-            <button className={styles.bottomButton}>Try now</button>
+          <button className={styles.bottomButton}>Try now</button>
         </div>
-        
       </div>
     );
 }
