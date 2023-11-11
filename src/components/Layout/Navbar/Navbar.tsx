@@ -15,8 +15,6 @@ const Navbar = () => {
         <a onClick={() => navigate("/")} className={styles.text}>
           Home
         </a>
-        <a className={styles.text}>Pricing</a>
-        <a className={styles.text}>About</a>
         <SmallButton onClick={() => navigate("/videos")}>
           Free trial
         </SmallButton>
