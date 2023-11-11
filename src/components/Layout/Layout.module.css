@@ -1,7 +1,7 @@
 .wrapper {
     display: flex;
     flex-direction: column;
-    padding: 3rem 5rem;
+    padding: 6rem 6rem;
     min-height: 100vh;
     box-sizing: border-box;
 

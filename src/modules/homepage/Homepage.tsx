@@ -14,7 +14,7 @@ const Homepage = () => {
     const navigate = useNavigate();
     return (
       <div className={styles.bg}>
-        <MainGraphic onClick={() => navigate("/clip")} />
+        <MainGraphic onClick={() => navigate("/videos")} />
         <StepDisplay
           headerText="Step one: upload a YouTube video"
           descriptionText="Lorem ipsum dolor sit amet consectetur. Ipsum rhoncus urna consequat ac. Mauris viverra mi tincidunt massa sed tortor. Dictum leo mattis auctor at proin ultrices. Ut suspendisse ante sed leo et facilisi porta egestas sed."

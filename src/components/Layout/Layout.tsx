@@ -1,4 +1,6 @@
 import { ReactNode } from "react";
+import Navbar from "./Navbar/Navbar";
+import Footer from "./Footer/Footer";
 
 import styles from "./Layout.module.css";
 
@@ -7,7 +9,13 @@ interface Props {
 }
 
 const Layout = (props: Props) => {
-  return <div className={styles.wrapper}>{props.children}</div>;
+  return (
+    <>
+      <Navbar />
+      <div className={styles.wrapper}>{props.children}</div>
+      <Footer />
+    </>
+  );
 };
 
 export default Layout;
