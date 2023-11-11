@@ -1,29 +1,20 @@
-@keyframes skeleton-loading {
-  0% {
-    background-position: -200% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
+.item {
+  position: relative;
+  width: 8.4375rem;
+  height: 15rem;
+  border-radius: 0.9375rem;
+  background: #151515;
+  background-size: 200% 100%; 
+  cursor: pointer;
 }
 
-.item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 12rem;
-  height: 6rem;
-  border-radius: 0.9375rem;
-  background: linear-gradient(108deg, 
-  rgba(217, 217, 217, 0.8) 0%, 
-  rgba(237, 237, 237, 0.9) 25%, 
-  rgba(217, 217, 217, 0.85) 50%, 
-  rgba(237, 237, 237, 0.9) 75%, 
-  rgba(217, 217, 217, 0.8) 100%);
-  background-size: 200% 100%; 
-  animation: skeleton-loading 1.5s infinite linear; 
-  cursor: pointer;
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .container {
@@ -31,14 +22,34 @@
     justify-content: center;
 }
 
+.playButton {
+}
+
 .checkbox {
-    display: flex;
+    position: absolute;
+    margin: 0.75rem;
+    border-radius: 2rem;
+    appearance: none;
+    -webkit-appearance: none;
     align-items: center;
     justify-content: center;
     width: 1.5rem;
     height: 1.5rem;
     border-radius: 0.25rem;
     background: #FFFFFF;
-    margin-right: 0.5rem;
     cursor: pointer;
+    z-index: 2;
+    pointer-events: all;
+    background-color: transparent;
+    border: 2px solid #969696;
+    outline: none;
+    vertical-align: middle;
+    border-radius: 50%;
+    top: 80%;
+    right: 0;
+
+    &:checked {
+        background-color: #138D1F;
+        border: none;
+    }
 }

@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { MutableRefObject, useEffect, useState } from "react";
 import Item from "../Item/Item";
 import { ClipInterface, SelectedClipsInterface } from "../types";
 
 interface Props {
+  itemsRef?: MutableRefObject<SelectedClipsInterface[]>;
   items: ClipInterface[];
   className: string;
 }
@@ -13,7 +14,12 @@ const ItemList = (props: Props) => {
   );
 
   useEffect(() => {
-    console.log(selectedItems);
+    if (!props.itemsRef) {
+      console.log("returned:w|");
+      return;
+    }
+
+    props.itemsRef.current = selectedItems;
   }, [selectedItems]);
 
   return (

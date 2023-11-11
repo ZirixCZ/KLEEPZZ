@@ -1,0 +1,19 @@
+.video {
+    width: 19.4318181818rem;
+    height: 8.75rem;
+    border-radius: 1rem;
+    background: #151515;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plusPlaceholder {
+
+}
+
+.placeholder {
+    background: transparent;
+    border: 1px solid #969696;
+    cursor: pointer;
+}

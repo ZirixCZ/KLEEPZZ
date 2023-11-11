@@ -15,6 +15,7 @@
     display: flex;
     gap: 1.81rem;
     flex-wrap: wrap;
+    justify-content: center;
     width: 40rem;
     height: 100%;
     padding-top: 10rem;
@@ -26,4 +27,8 @@
 
 .isWide {
     width: 50rem;
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 }

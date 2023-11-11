@@ -20,15 +20,6 @@ const Skeleton = (props: Props) => {
     {
       id: 3,
     },
-    {
-      id: 4,
-    },
-    {
-      id: 5,
-    },
-    {
-      id: 6,
-    },
   ];
   return (
     <div className={cx(styles.itemListContainer, props.className)}>

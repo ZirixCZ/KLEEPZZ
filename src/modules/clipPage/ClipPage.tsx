@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
@@ -7,7 +7,8 @@ import ItemList from "./ItemList/ItemList";
 import Modal from "./Modal/Modal";
 
 import styles from "./ClipPage.module.css";
-import { ClipPageContextProvider, useClipPageContext } from "./context";
+import { ClipPageContextProvider } from "./context";
+import { SelectedClipsInterface } from "./types";
 import SmallButton from "../../components/SmallButton/SmallButton";
 import { ClipInterface } from "./types";
 
@@ -29,7 +30,12 @@ interface ShowItemsProps {
 
 const ShowItems = (props: ShowItemsProps) => {
   const displaySkeleton = props.isFetching || props.items.length < 1;
-  const [selectedItems, setSelectedItems] = useState<ClipInterface[]>([]);
+  const selectedItemsRef = useRef<SelectedClipsInterface[]>([]);
+
+  const onClick = () => {
+    // TODO: send the selected items to the api
+    console.log(selectedItemsRef);
+  };
 
   return (
     <>
@@ -39,11 +45,12 @@ const ShowItems = (props: ShowItemsProps) => {
           <Skeleton className={styles.itemListContainer} />
         ) : (
           <ItemList
+            itemsRef={selectedItemsRef}
             items={props.items}
             className={cx(styles.itemListContainer, styles.isWide)}
           />
         )}
-        <SmallButton disabled={props.isFetching}>
+        <SmallButton onClick={onClick} disabled={props.isFetching}>
           {props.isFetching ? "Loading..." : "Confirm"}
         </SmallButton>
       </div>
