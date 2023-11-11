@@ -5,7 +5,13 @@
     align-items: center;
     overflow: hidden;
     height: 100%;
+
+    &.containerFillSpace {
+        flex: 1;
+    }
 }
+
+
 
 .gap {
     gap: 2.75rem;
@@ -18,7 +24,6 @@
     justify-content: center;
     width: 40rem;
     height: 100%;
-    padding-top: 10rem;
 
     @media (max-width: 768px) {
         width: 100%;
@@ -31,4 +36,9 @@
     @media (max-width: 768px) {
         width: 100%;
     }
+}
+
+.noSpaceHeading {
+    margin: 0;
+    padding: 0;
 }

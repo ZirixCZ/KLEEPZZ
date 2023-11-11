@@ -46,21 +46,23 @@ const Item = (props: Props) => {
         onClick={onClick}
         className={cx(styles.item, { [styles.disabled]: !props.isActive })}
       >
-        <div className={styles.wrapper}>
-          <img className={styles.playButton} src="./assets/Arrow.svg" />
-        </div>
         {props.isActive && (
-          <input
-            onClick={(e) => {
-              e.stopPropagation();
-            }}
-            onChange={(e) => {
-              e.stopPropagation();
-              setChecked(e.target.checked);
-            }}
-            type="checkbox"
-            className={styles.checkbox}
-          />
+          <>
+            <div className={styles.wrapper}>
+              <img className={styles.playButton} src="./assets/Arrow.svg" />
+            </div>
+            <input
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+              onChange={(e) => {
+                e.stopPropagation();
+                setChecked(e.target.checked);
+              }}
+              type="checkbox"
+              className={styles.checkbox}
+            />
+          </>
         )}
       </div>
     </div>

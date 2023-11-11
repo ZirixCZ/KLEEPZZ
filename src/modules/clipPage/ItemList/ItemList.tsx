@@ -15,7 +15,7 @@ const ItemList = (props: Props) => {
 
   useEffect(() => {
     if (!props.itemsRef) {
-      console.log("returned:w|");
+    console.log("returned:w|");
       return;
     }
 

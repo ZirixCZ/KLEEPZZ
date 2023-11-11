@@ -1,8 +1,11 @@
 .header {
-    color: #F8FFF7;
+    color: #FFF;
+    font-family: Nunito;
     font-size: 3rem;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
     text-align: center;
-    font-weight: 800;
 
     @media (max-width: 768px) {
         font-size: 1.5rem;
@@ -10,5 +13,5 @@
 }
 
 .wrapper {
-    max-width: 24.1875rem;
+    max-width: 40rem;
 }
