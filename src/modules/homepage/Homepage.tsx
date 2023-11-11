@@ -34,7 +34,12 @@ const Homepage = () => {
         />
         <Graphic source="./assets/Row3.svg" />
         <div className={styles.center}>
-          <button className={styles.bottomButton}>Try now</button>
+          <button
+            onClick={() => navigate("/videos")}
+            className={styles.bottomButton}
+          >
+            Try now
+          </button>
         </div>
       </div>
     );

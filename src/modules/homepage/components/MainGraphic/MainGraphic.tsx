@@ -8,7 +8,7 @@ interface Props {
 const MainGraphic = (props: Props) => {
   return (
     <div className={styles.background}>
-      <p className={styles.text}>Funovation</p>
+      <p className={styles.text}>Funovation 2023</p>
       <p className={styles.bigText}>
         Extract short clips from long and boring videos
       </p>

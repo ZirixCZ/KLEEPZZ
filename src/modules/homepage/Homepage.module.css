@@ -26,6 +26,7 @@ body {
 
 .bottomButton {
   display: inline-flex;
+  margin-top: 2rem;
   padding: 16px 48px;
   justify-content: center;
   align-items: center;
