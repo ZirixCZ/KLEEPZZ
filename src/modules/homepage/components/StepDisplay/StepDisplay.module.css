@@ -1,0 +1,24 @@
+
+.header{
+color: #FFF;
+font-family: Nunito;
+font-size: 52px;
+font-style: normal;
+font-weight: 900;
+line-height: normal; 
+text-align: center;
+}
+
+.description{
+    
+    color: var(--grey, #969696);
+
+    font-family: Nunito;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    padding: 0px 200px 0px 200px;
+
+}

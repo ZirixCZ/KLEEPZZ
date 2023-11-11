@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react";
 import cx from "classnames";
 import Button from "./Button/Button";
-import Preview from "./Preview/Preview";
 import Header from "./Header/Header";
 import { HeaderTextInterface } from "./types";
 
@@ -21,7 +20,7 @@ const HorizontalBlock = (props: Props) => {
         <div>
           {props.buttonText && <Button>{props.buttonText}</Button>}
           <div className={cx(styles.block,  styles.justifyEnd)}>
-            <Preview />
+            
             <Header>
               <HeaderText header={props.headerContent} />
             </Header>
@@ -33,7 +32,7 @@ const HorizontalBlock = (props: Props) => {
             <Header>
               <HeaderText header={props.headerContent} />
             </Header>
-            <Preview />
+            
           </div>
 
           {props.buttonText && <Button>{props.buttonText}</Button>}

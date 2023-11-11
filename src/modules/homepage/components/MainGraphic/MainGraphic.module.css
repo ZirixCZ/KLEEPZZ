@@ -1,0 +1,65 @@
+.background {
+  width: 1744px;
+  height: 645px;
+  flex-shrink: 0;
+  border-radius: 64px;
+  background: #6a6ed3;
+}
+
+.text {
+  color: #fff;
+  font-family: Nunito;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 96px 0px 0px 88px;
+}
+
+.bigText {
+  color: #f8fff7;
+  font-family: Nunito;
+  font-size: 72px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 81px; /* 112.5% */
+  padding-left: 88px;
+  max-width: 1000px;
+}
+
+.description {
+  width: 831px;
+  color: #fff;
+  font-family: Nunito;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding-left: 88px;
+}
+
+.button {
+  display: flex;
+  padding: 16px 48px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 56px;
+  background: linear-gradient(270deg, #373fff 0%, #1e25ce 100%);
+  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.1),
+    0px 12px 12px 0px rgba(0, 0, 0, 0.09), 0px 27px 16px 0px rgba(0, 0, 0, 0.05),
+    0px 48px 19px 0px rgba(0, 0, 0, 0.01), 0px 75px 21px 0px rgba(0, 0, 0, 0);
+  color: #fff;
+  font-family: Nunito;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.padding {
+  padding-left: 88px;
+}
