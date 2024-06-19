@@ -1,5 +1,7 @@
 > Won the first place on the [2023 Foxconn funovation hackathon](https://www.foxconn.cz/funovation23)
 
+> Backend for this project can be [found here](https://github.com/espeletia/funovation_hac_23_BE)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
