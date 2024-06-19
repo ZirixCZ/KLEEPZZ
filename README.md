@@ -1,3 +1,5 @@
+> Won the first place on the [2023 Foxconn funovation hackathon](https://www.foxconn.cz/funovation23)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
