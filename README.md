@@ -2,7 +2,31 @@
 
 > Backend for this project can be [found here](https://github.com/espeletia/funovation_hac_23_BE)
 
-# Getting Started with Create React App
+### KLEEPZ transforms long videos into shorter clips. You can then choose the clips you like and construct a final video with them.
+
+<p align="left">
+  <img width="45%" alt="KLEEPZ homepage" src="https://github.com/user-attachments/assets/2065c047-5980-4410-934f-2a0c687667d9"   />
+<img  width="45%" alt="KLEEPZ homepage 2024-12-29 at 1 28 53" src="https://github.com/user-attachments/assets/40625167-e716-4130-8c4d-2bd30b42f8e1"  />
+<img width="45%" alt="KLEEPZ homepage 2024-12-29 at 1 29 14" src="https://github.com/user-attachments/assets/56784b88-7962-41f4-8931-54dfcf26c747" />
+<img width="45%" alt="KLEEPZ homepage 2024-12-29 at 1 29 36" src="https://github.com/user-attachments/assets/1460f215-73d7-43c1-80a0-4753063e3ea7" />
+</p>
+
+The homepage is designed to walk you through the core functionality of KLEEPZ.
+
+<img width="669" alt="KLEEPZ video editor" src="https://github.com/user-attachments/assets/0ce23d61-4d4e-4afd-a27f-8ca002f304c5" />
+
+You can pick an already uploaded video from the video editor page, or add a new one.
+
+<img width="669" alt="KLEEPZ new video uploader" src="https://github.com/user-attachments/assets/6735e785-6629-4a02-b89f-aff5bb013acf" />
+
+Input an url for the video and give it a brief description.
+
+<img width="669" alt="KLEEPZ clip picker loader" src="https://github.com/user-attachments/assets/c87242e9-06ab-4f8c-86fa-0b9da7b995a0" />
+
+After the generation is complete, proceed by picking the clips you like the most. You can always backtrack and edit your uploaded videos further from the video editor page.
+
+# Getting Started with
+ Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
