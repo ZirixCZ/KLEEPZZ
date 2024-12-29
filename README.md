@@ -2,7 +2,8 @@
 
 > Backend for this project can be [found here](https://github.com/espeletia/funovation_hac_23_BE)
 
-### KLEEPZ transforms long videos into shorter clips. You can then choose the clips you like and construct a final video with them.
+### KLEEPZ 
+transforms long videos into shorter clips. You can then choose the clips you like and construct a final video with them.
 
 <p align="left">
   <img width="45%" alt="KLEEPZ homepage" src="https://github.com/user-attachments/assets/2065c047-5980-4410-934f-2a0c687667d9"   />
