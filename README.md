@@ -5,6 +5,13 @@
 ### KLEEPZ 
 transforms long videos into shorter clips. You can then choose the clips you like and construct a final video with them.
 
+#### Demo
+
+
+https://github.com/user-attachments/assets/6dd81f50-8882-4c5c-a9eb-c714eb202859
+
+
+
 <p align="left">
   <img width="45%" alt="KLEEPZ homepage" src="https://github.com/user-attachments/assets/2065c047-5980-4410-934f-2a0c687667d9"   />
 <img  width="45%" alt="KLEEPZ homepage 2024-12-29 at 1 28 53" src="https://github.com/user-attachments/assets/40625167-e716-4130-8c4d-2bd30b42f8e1"  />
